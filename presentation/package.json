@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "mdx-deck deck.js",
+    "build": "mdx-deck build deck.js",
+    "pdf": "mdx-deck pdf deck.js",
+    "image": "mdx-deck screenshot deck.js",
+    "help": "mdx-deck",
+    "now-build": "mdx-deck build deck.js --no-html"
+  },
+  "devDependencies": {
+    "mdx-deck": "^1.10.0",
+    "@now/mdx-deck": "^0.5.4"
+  },
+  "name": "redux-introduction",
+  "version": "1.0.0",
+  "dependencies": {
+    "mdx-deck-code-surfer": "0.5.5",
+    "raw-loader": "^2.0.0",
+    "react-tweet-embed": "^1.2.2"
+  }
+}

@@ -1,0 +1,28 @@
+.navbar {
+  background: black;
+  padding: 20px;
+  color: white;
+}
+
+.logo {
+  margin: 0;
+  display: inline;
+}
+
+.links {
+  color: white;
+  font-size: 1.5em;
+  display: inline;
+  float: right;
+  margin: 0;
+}
+
+.links > li {
+  display: inline;
+  padding: 0 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}

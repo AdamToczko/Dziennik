@@ -1,0 +1,68 @@
+# Flux
+
+---
+
+## Czym jest Flux?
+
+<img src="images/flux-dictionary.png" width={"50%"} />
+
+---
+
+## Czym jest Flux?
+
+- Architektura
+- Stworzona przez Facebook
+
+---
+
+## Po co to nam? Jaki problem rozwiazuje?
+
+- Problem skalowalnosci w Facebook
+- Uzywa jednokierunkowego przeplywu danych zamiast dwukierunkowego
+
+[wiecej na ten temat](https://www.youtube.com/watch?v=nYkdrAPrdcw)
+
+---
+
+## A jaki byl problem skalowalnosci?
+
+---
+
+![fix-chat-please](images/fix-chat-please.png)
+
+---
+
+![chat-components](images/chat-components.png)
+
+---
+
+![unread-message](images/unread-message.png)
+
+---
+
+## Co oznacza jednokierunkowy?
+
+---
+
+![complex-mvc](images/complex-mvc.png)
+
+---
+
+![simple-flux-1](images/simple-flux.png)
+
+---
+
+![simple-flux-2](images/simple-flux-2.png)
+
+---
+
+- **Action** - obiekt z danymi (wiadomosc)
+- **Dispatcher** - wysyla akcje do konkretnych storow
+- **Store** - zawiera pewne informacje, rejestruje callbacki, ktore reaguja na wiadomosci wyslane przez dispatchera, emituja zmiany, ktore moga zostac uzyte przez zainteresowanych (np widok).
+- **View** - MOZE (nie musi) byc nim React, moze byc zrodlem Akcji
+
+---
+
+### Wazne!
+
+To tylko architektua / pomysl ktory musi zostac zaimplementowany!

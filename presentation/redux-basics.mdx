@@ -1,0 +1,224 @@
+import { Appear } from "mdx-deck";
+
+# Redux
+
+---
+
+## Czym jest Redux?
+
+---
+
+> A predictable state container for JavaScript apps.
+
+---
+
+<img
+  src="https://media.giphy.com/media/R459x856IfF6w/giphy.gif"
+  width={"100%"}
+/>
+
+---
+
+## Nie martwmy sie ta definicja
+
+i przejdzmy przez kilka... historyjek
+
+---
+
+### Historyjka #1
+
+Wybieranie kaski z banku
+
+<ol>
+  <Appear>
+    <li>
+      Start with intent (<b>ACTION</b>) - I want to <code>WITHDRAW_MONEY</code>
+    </li>
+    <li>Go to bank and take the money from the vault</li>
+  </Appear>
+</ol>
+
+---
+
+![robbery](https://media1.giphy.com/media/l3q2w6nnnPdd8lPWM/giphy.gif)
+
+---
+
+### Historyjka #1
+
+Wybieranie kaski z banku
+
+<ol>
+  <li>
+    Start with intent (<b>ACTION</b>) - I want to <code>WITHDRAW_MONEY</code>
+  </li>
+  <Appear>
+    <li>
+      Go to Cashier (<b>REDUCER</b>) and ask for it (<b>DISPATCH</b>)
+    </li>
+    <li>
+      Cashier goes to vault (<b>STORE</b>) and withdraws it for you
+    </li>
+    <li>
+      Only cashier knows how to operate on vault's money (store's <b>STATE</b>)
+      to get the money
+    </li>
+  </Appear>
+</ol>
+
+---
+
+### Historyjka #2
+
+Zamawianie drinku w barze
+
+<ol>
+  <Appear>
+    <li>
+      Start with intent (<b>ACTION</b>) - I want to <code>HAVE_A_DRINK</code>
+    </li>
+    <li>Go to the shelf and pour some whiskey</li>
+  </Appear>
+</ol>
+
+---
+
+![drunk-guy](https://media.giphy.com/media/q6thPmXvYrwYM/giphy.gif)
+
+---
+
+### Historyjka #2
+
+Zamawianie drinku w barze
+
+<ol>
+  <li>
+    Start with intent (<b>ACTION</b>) - I want to <code>HAVE_A_DRINK</code>
+  </li>
+  <Appear>
+    <li>
+      Go to Barman (<b>REDUCER</b>) and ask for it (<b>DISPATCH</b>)
+    </li>
+    <li>
+      Barman goes to shelf (<b>STORE</b>) and makes a drink for you
+    </li>
+    <li>
+      Only barman knows how to operate on the bottles (store's <b>STATE</b>) to
+      make a drink
+    </li>
+  </Appear>
+</ol>
+
+---
+
+### Historyjka #3
+
+Dzwonienie do przyjaciela
+
+<ol>
+  <Appear>
+    <li>
+      Start with intent (<b>ACTION</b>) - I want to <code>HAVE_A_DRINK</code>
+    </li>
+    <li>Go to the friend's house and talk to him</li>
+  </Appear>
+</ol>
+
+---
+
+![get-out](https://media.giphy.com/media/3oKIPqWKVtErzDNtKw/giphy.gif)
+
+---
+
+### Historyjka #3
+
+Dzwonienie do przyjaciela
+
+<ul>
+  <li>
+    Start with intent (<b>ACTION</b>) - I want to <code>CALL_A_FRIEND</code>
+  </li>
+  <Appear>
+    <li>
+      Grab phone (<b>REDUCER</b>) enter phone number and call your friend (
+      <b>DISPATCH</b>)
+    </li>
+    <li>
+      Phone knows how to mobile switching center (<b>STORE</b>) and makes a call
+      for you
+    </li>
+    <li>
+      Only phone knows how to operate on phone connections (store's <b>STATE</b>
+      ) to arrange a call
+    </li>
+  </Appear>
+</ul>
+
+---
+
+### Story #5
+
+Wysylanie listu
+
+---
+
+### Story #5
+
+Zabieranie dziecka z przedszkola
+
+---
+
+### Story #6
+
+Kupowanie czegos w sklepie (to moze byc tricky)
+
+---
+
+## Jak to sie ma do reduxa?
+
+---
+
+### ACTION
+
+- zwykly obiekt
+
+---
+
+### STORE
+
+- tutaj trzymane sa dane
+- tylko jedno zrodlo prawdy
+- jeden obiekt na przetrzymywanie calego stanu aplikacji
+
+---
+
+### STATE
+
+- jest tylko do odczytu!
+
+---
+
+### REDUCER
+
+- potrafi zmienic stan
+- zmiana stanu za pomoca czystej funkcji
+
+---
+
+![redux gif 1](images/redux-1.gif)
+
+---
+
+## Cwiczenie #1: counter (bez widoku)
+
+---
+
+## Cwiczenie #2: BANK app (bez widoku)
+
+---
+
+## Cwiczenie #3: TODO app (bez widoku)
+
+---
+
+## Dodatkowe cwiczenie: podepnij counter do NIE Reactowego widoku
