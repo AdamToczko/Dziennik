@@ -1,5 +1,3 @@
-import { createStore } from "redux";
-
 // ACTION TYPES
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
@@ -8,33 +6,33 @@ const ADD = "ADD";
 const SUBTRACT = "SUBTRACT";
 
 // ACTION CREATORS
-const increment = () => {
+export const increment = () => {
   return {
     type: INCREMENT
   };
 };
 
-const add = (value = 0) => {
+export const add = (value = 0) => {
   return {
     type: ADD,
     payload: value
   };
 };
 
-const subtract = (value = 0) => {
+export const subtract = (value = 0) => {
   return {
     type: SUBTRACT,
     payload: value
   };
 };
 
-const reset = () => {
+export const reset = () => {
   return {
     type: RESET
   };
 };
 
-const decrement = () => {
+export const decrement = () => {
   return {
     type: DECREMENT
   };
@@ -64,16 +62,4 @@ const counterReducer = (prevState = 0, action) => {
   return prevState;
 };
 
-const store = createStore(counterReducer);
-const { getState, dispatch, subscribe } = store;
-
-subscribe(() => {
-  console.log("Current counter value: ", getState());
-});
-
-const actions = [increment(), increment(), add(5), increment()];
-actions.forEach(dispatch);
-
-window.clickIncrement = () => dispatch(increment());
-
-dispatch(subtract(10));
+export default counterReducer;
