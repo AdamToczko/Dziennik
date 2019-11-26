@@ -95,3 +95,29 @@ const todosReducer = (prevState = initialState, action) => {
 };
 
 export default todosReducer;
+
+// Selectors
+const selectTodos = state => state.todos;
+
+const selectVisibilityFilter = state => state.todosApp.visibilityFilter;
+
+export const selectTodosLeft = state => {
+  return selectTodos(state).filter(todo => !todo.isDone).length;
+};
+
+const selectIsClearVisible = state => {
+  return selectTodos(state).some(todo => todo.isDone);
+};
+
+const selectVisibleTodos = state => {
+  const todos = selectTodos(state);
+  const visibilityFilter = selectVisibilityFilter();
+
+  if (visibilityFilter == "all") {
+    return todos;
+  } else if (visibilityFilter == "completed") {
+    return todos.filter(todo => todo.isDone);
+  } else if (visibilityFilter == "active") {
+    return todos.filter(todo => !todo.isDone);
+  }
+};

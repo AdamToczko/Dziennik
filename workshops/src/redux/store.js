@@ -7,7 +7,8 @@ import todosReducer, {
   removeTodo,
   toggleTodo,
   editTodo,
-  toggleAll
+  toggleAll,
+  selectTodosLeft
 } from "./todos";
 import appleReducer, {
   addWorm,
@@ -29,6 +30,13 @@ const { getState, dispatch, subscribe } = store;
 
 subscribe(() => {
   console.log("Current state value: ", getState());
+});
+
+subscribe(() => {
+  console.log(
+    "Todos left: ",
+    getState().todos.filter(todo => !todo.isDone)
+  );
 });
 
 window.clickIncrement = () => dispatch(increment());
