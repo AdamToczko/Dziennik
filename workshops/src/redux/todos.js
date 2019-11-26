@@ -16,6 +16,7 @@ const removeTodo = () => {};
 
 // reducer
 const todosReducer = (prevState, action) => {
+  console.log("todos reducer here, got action: ", action);
   return [];
 };
 

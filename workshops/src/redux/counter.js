@@ -13,6 +13,13 @@ export const increment = () => {
 };
 
 export const add = (value = 0) => {
+  if (typeof value !== "number") {
+    return {
+      type: ADD,
+      payload: 0
+    };
+  }
+
   return {
     type: ADD,
     payload: value
@@ -44,9 +51,11 @@ export const decrement = () => {
 // [increment(), subtract(5), add(4), reset(), increment()];
 
 // state = 1
+const initialState = 10;
 
 // (prevState, action) -> newState
-const counterReducer = (prevState = 0, action) => {
+const counterReducer = (prevState = initialState, action) => {
+  console.log("counter reducer here, got action: ", action);
   if (action.type === INCREMENT) {
     return prevState + 1;
   } else if (action.type === DECREMENT) {
@@ -56,7 +65,7 @@ const counterReducer = (prevState = 0, action) => {
   } else if (action.type === ADD) {
     return prevState + action.payload;
   } else if (action.type === RESET) {
-    return 0;
+    return initialState;
   }
 
   return prevState;

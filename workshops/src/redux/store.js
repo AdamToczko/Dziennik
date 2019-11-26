@@ -11,18 +11,10 @@ const store = createStore(rootReducer);
 const { getState, dispatch, subscribe } = store;
 
 subscribe(() => {
-  console.log("Current counter value: ", getState());
+  console.log("Current counter value: ", getState().counter);
 });
-
-const actions = [
-  increment(),
-  increment(),
-  addTodo("New todo Item"),
-  add(5),
-  increment()
-];
-actions.forEach(dispatch);
 
 window.clickIncrement = () => dispatch(increment());
 
+// action creator -> action -> dispatch
 dispatch(subtract(10));
