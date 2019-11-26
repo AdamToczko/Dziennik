@@ -5,6 +5,7 @@ const ADD_TODO = "ADD_TODO";
 const REMOVE_TODO = "REMOVE_TODO";
 const TOGGLE_TODO = "TOGGLE_TODO";
 const EDIT_TODO = "EDIT_TODO";
+const TOGGLE_ALL = "TOGGLE_ALL";
 
 // Action creators
 // 1. Create action creator
@@ -37,6 +38,12 @@ export const editTodo = (id, text) => ({
   type: EDIT_TODO,
   payload: { id, text }
 });
+
+export const toggleAll = () => {
+  return {
+    type: TOGGLE_ALL
+  };
+};
 
 // reducer
 const initialState = [];
@@ -73,6 +80,14 @@ const todosReducer = (prevState = initialState, action) => {
         } else {
           return todo;
         }
+      });
+    case TOGGLE_ALL:
+      const areAllDone = prevState.every(todo => todo.isDone);
+      return prevState.map(todo => {
+        return {
+          ...todo,
+          isDone: !areAllDone
+        };
       });
     default:
       return prevState;

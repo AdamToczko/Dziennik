@@ -6,7 +6,8 @@ import todosReducer, {
   addTodo,
   removeTodo,
   toggleTodo,
-  editTodo
+  editTodo,
+  toggleAll
 } from "./todos";
 import appleReducer, {
   addWorm,
@@ -48,12 +49,14 @@ const actions = [
   // 4. Use action creators to check if everything works correctly
   addTodo(),
   addTodo("Learn Redux"),
-  addTodo("Learn React")
+  addTodo("Learn React"),
+  addTodo("Check if toggle all works")
 ];
 
 actions.forEach(dispatch);
 
 const idOfTodoToToggle = getState().todos[0].id;
-console.log(idOfTodoToToggle);
-// id           // text
-dispatch(editTodo(idOfTodoToToggle, "Add redux to the project!"));
+// // id           // text
+dispatch(toggleTodo(idOfTodoToToggle));
+dispatch(toggleAll());
+dispatch(toggleAll());
