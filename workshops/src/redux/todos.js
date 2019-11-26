@@ -33,6 +33,11 @@ export const toggleTodo = id => {
   };
 };
 
+export const editTodo = (id, text) => ({
+  type: EDIT_TODO,
+  payload: { id, text }
+});
+
 // reducer
 const initialState = [];
 
@@ -53,6 +58,17 @@ const todosReducer = (prevState = initialState, action) => {
           return {
             ...todo,
             isDone: !todo.isDone
+          };
+        } else {
+          return todo;
+        }
+      });
+    case EDIT_TODO:
+      return prevState.map(todo => {
+        if (todo.id === action.payload.id) {
+          return {
+            ...todo,
+            text: action.payload.text
           };
         } else {
           return todo;
