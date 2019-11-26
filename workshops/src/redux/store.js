@@ -16,7 +16,8 @@ import appleReducer, {
   clean,
   grow,
   removeWorm,
-  rot
+  rot,
+  selectEatable
 } from "./apple";
 
 const rootReducer = combineReducers({
@@ -29,31 +30,32 @@ const store = createStore(rootReducer, devToolsEnhancer());
 const { getState, dispatch, subscribe } = store;
 
 subscribe(() => {
-  console.log("Current state value: ", getState());
+  // console.log("Current state value: ", getState());
+  console.log("Is apple eatable? ", selectEatable(getState()));
 });
 
 subscribe(() => {
-  console.log(
-    "Todos left: ",
-    getState().todos.filter(todo => !todo.isDone)
-  );
+  // console.log(
+  //   "Todos left: ",
+  //   getState().todos.filter(todo => !todo.isDone)
+  // );
 });
 
 window.clickIncrement = () => dispatch(increment());
 
 // action creator -> action -> dispatch
-dispatch(subtract(10));
+// dispatch(subtract(10));
 
 const actions = [
-  grow(),
-  addWorm(),
-  clean(),
-  removeWorm(),
-  bite(),
-  bite(),
-  bite(5),
-  bite(10),
-  rot(),
+  grow(), // false
+  addWorm(), // false
+  clean(), // false
+  removeWorm(), // true
+  bite(), // true
+  bite(), // true
+  bite(5), // true
+  bite(10), // false
+  rot(), // false
   // 4. Use action creators to check if everything works correctly
   addTodo(),
   addTodo("Learn Redux"),
@@ -63,8 +65,8 @@ const actions = [
 
 actions.forEach(dispatch);
 
-const idOfTodoToToggle = getState().todos[0].id;
+// const idOfTodoToToggle = getState().todos[0].id;
 // // id           // text
-dispatch(toggleTodo(idOfTodoToToggle));
+// dispatch(toggleTodo(idOfTodoToToggle));
 dispatch(toggleAll());
 dispatch(toggleAll());

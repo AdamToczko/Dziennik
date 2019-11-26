@@ -55,7 +55,7 @@ const initialState = 10;
 
 // (prevState, action) -> newState
 const counterReducer = (prevState = initialState, action) => {
-  console.log("counter reducer here, got action: ", action);
+  // console.log("counter reducer here, got action: ", action);
   if (action.type === INCREMENT) {
     return prevState + 1;
   } else if (action.type === DECREMENT) {
@@ -72,3 +72,6 @@ const counterReducer = (prevState = initialState, action) => {
 };
 
 export default counterReducer;
+
+// Selectors
+const selectCounter = state => state.counter;
