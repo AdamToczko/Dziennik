@@ -19,7 +19,12 @@ export const addTodo = (text = "") => {
   };
 };
 
-const removeTodo = () => {};
+export const removeTodo = id => {
+  return {
+    type: REMOVE_TODO,
+    payload: id
+  };
+};
 
 // reducer
 const initialState = [];
@@ -33,6 +38,8 @@ const todosReducer = (prevState = initialState, action) => {
       } else {
         return prevState;
       }
+    case REMOVE_TODO:
+      return prevState.filter(todo => todo.id !== action.payload);
     default:
       return prevState;
   }
