@@ -26,6 +26,13 @@ export const removeTodo = id => {
   };
 };
 
+export const toggleTodo = id => {
+  return {
+    type: TOGGLE_TODO,
+    payload: id
+  };
+};
+
 // reducer
 const initialState = [];
 
@@ -40,6 +47,17 @@ const todosReducer = (prevState = initialState, action) => {
       }
     case REMOVE_TODO:
       return prevState.filter(todo => todo.id !== action.payload);
+    case TOGGLE_TODO:
+      return prevState.map(todo => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            isDone: !todo.isDone
+          };
+        } else {
+          return todo;
+        }
+      });
     default:
       return prevState;
   }

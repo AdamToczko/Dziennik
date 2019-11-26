@@ -2,7 +2,7 @@ import { createStore, combineReducers } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 import counterReducer, { increment, add, subtract } from "./counter";
 // 3. Import action creator from todos module
-import todosReducer, { addTodo, removeTodo } from "./todos";
+import todosReducer, { addTodo, removeTodo, toggleTodo } from "./todos";
 import appleReducer, {
   addWorm,
   bite,
@@ -48,6 +48,6 @@ const actions = [
 
 actions.forEach(dispatch);
 
-const idOfTodoToRemove = getState().todos[0].id;
-console.log(idOfTodoToRemove);
-dispatch(removeTodo(idOfTodoToRemove));
+const idOfTodoToToggle = getState().todos[0].id;
+console.log(idOfTodoToToggle);
+dispatch(toggleTodo(idOfTodoToToggle));
