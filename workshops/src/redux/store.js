@@ -1,7 +1,8 @@
 import { createStore, combineReducers } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 import counterReducer, { increment, add, subtract } from "./counter";
-import todosReducer from "./todos";
+// 3. Import action creator from todos module
+import todosReducer, { addTodo } from "./todos";
 import appleReducer, {
   addWorm,
   bite,
@@ -38,7 +39,11 @@ const actions = [
   bite(),
   bite(5),
   bite(10),
-  rot()
+  rot(),
+  // 4. Use action creators to check if everything works correctly
+  addTodo(),
+  addTodo("Learn Redux"),
+  addTodo("Learn React")
 ];
 
 actions.forEach(dispatch);
