@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   apple: appleReducer
 });
 
-const store = createStore(rootReducer, devToolsEnhancer());
+export const store = createStore(rootReducer, devToolsEnhancer());
 export const { getState, dispatch, subscribe } = store;
 
 subscribe(() => {
