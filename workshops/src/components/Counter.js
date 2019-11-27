@@ -1,5 +1,7 @@
+import { connect } from "react-redux";
 import React, { Component } from "react";
 import styles from "./Counter.module.css";
+import { increment } from "../redux/counter";
 
 class Counter extends Component {
   render() {
@@ -17,4 +19,16 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+const mapStateToProps = state => {
+  return {
+    value: state.counter
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onIncrement: () => dispatch(increment())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

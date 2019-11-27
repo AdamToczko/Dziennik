@@ -6,7 +6,7 @@ const ADD = "ADD";
 const SUBTRACT = "SUBTRACT";
 
 // state = 1
-const initialState = 10;
+const initialState = 12;
 
 // (prevState, action) -> newState
 const counterReducer = (prevState = initialState, action) => {
