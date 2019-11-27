@@ -22,7 +22,7 @@ import appleReducer, {
 
 const rootReducer = combineReducers({
   todos: todosReducer,
-  counter: counterReducer,
+  count: counterReducer,
   apple: appleReducer
 });
 

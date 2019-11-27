@@ -6,7 +6,7 @@ const ADD = "ADD";
 const SUBTRACT = "SUBTRACT";
 
 // state = 1
-const initialState = 12;
+const initialState = 0;
 
 // (prevState, action) -> newState
 const counterReducer = (prevState = initialState, action) => {
@@ -74,4 +74,4 @@ export const reset = () => {
 // [increment(), subtract(5), add(4), reset(), increment()];
 
 // Selectors
-const selectCounter = state => state.counter;
+export const selectCounter = state => state.count;
