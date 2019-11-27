@@ -20,7 +20,7 @@
   width: 200px;
   height: 200px;
   border: 10px solid darkred;
-  background: red;
+  background: rgb(255, 108, 108);
   border-radius: 60px 70px 100px 90px;
 }
 
