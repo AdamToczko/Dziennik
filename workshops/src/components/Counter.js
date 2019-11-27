@@ -6,12 +6,16 @@ import {
   decrement,
   reset,
   selectCounter,
-  add
+  add,
+  subtract
 } from "../redux/counter";
 
 function Counter(props) {
   return (
     <div className={styles.container}>
+      <button className={styles.button} onClick={() => props.onSubtract(5)}>
+        -5
+      </button>
       <button className={styles.button} onClick={props.onDecrement}>
         -1
       </button>
@@ -40,7 +44,8 @@ const mapDispatchToProps = dispatch => {
     onIncrement: () => dispatch(increment()),
     onDecrement: () => dispatch(decrement()),
     onReset: () => dispatch(reset()),
-    onAdd: value => dispatch(add(value))
+    onAdd: value => dispatch(add(value)),
+    onSubtract: value => dispatch(subtract(value))
   };
 };
 
