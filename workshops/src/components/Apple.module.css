@@ -40,3 +40,11 @@
   text-align: right;
   color: white;
 }
+
+.warning {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  z-index: 20;
+  position: relative;
+}
