@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer, devToolsEnhancer());
-const { getState, dispatch, subscribe } = store;
+export const { getState, dispatch, subscribe } = store;
 
 subscribe(() => {
   // console.log("Current state value: ", getState());
@@ -41,10 +41,15 @@ subscribe(() => {
   // );
 });
 
+// Add clickIncrement function to global namespace
 window.clickIncrement = () => dispatch(increment());
 
-// action creator -> action -> dispatch
-// dispatch(subtract(10));
+// Add listed action creators to global namespace
+const actionsToBeBoundToWindow = [grow, addWorm, clean].forEach(
+  actionCreator => {
+    window[actionCreator.name] = () => dispatch(actionCreator());
+  }
+);
 
 const actions = [
   grow(), // false
