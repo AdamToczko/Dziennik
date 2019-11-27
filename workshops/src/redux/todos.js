@@ -7,44 +7,6 @@ const TOGGLE_TODO = "TOGGLE_TODO";
 const EDIT_TODO = "EDIT_TODO";
 const TOGGLE_ALL = "TOGGLE_ALL";
 
-// Action creators
-// 1. Create action creator
-export const addTodo = (text = "") => {
-  return {
-    type: ADD_TODO,
-    payload: {
-      id: uuid.v4(),
-      isDone: false,
-      text: text
-    }
-  };
-};
-
-export const removeTodo = id => {
-  return {
-    type: REMOVE_TODO,
-    payload: id
-  };
-};
-
-export const toggleTodo = id => {
-  return {
-    type: TOGGLE_TODO,
-    payload: id
-  };
-};
-
-export const editTodo = (id, text) => ({
-  type: EDIT_TODO,
-  payload: { id, text }
-});
-
-export const toggleAll = () => {
-  return {
-    type: TOGGLE_ALL
-  };
-};
-
 // reducer
 const initialState = [];
 
@@ -95,6 +57,44 @@ const todosReducer = (prevState = initialState, action) => {
 };
 
 export default todosReducer;
+
+// Action creators
+// 1. Create action creator
+export const addTodo = (text = "") => {
+  return {
+    type: ADD_TODO,
+    payload: {
+      id: uuid.v4(),
+      isDone: false,
+      text: text
+    }
+  };
+};
+
+export const removeTodo = id => {
+  return {
+    type: REMOVE_TODO,
+    payload: id
+  };
+};
+
+export const toggleTodo = id => {
+  return {
+    type: TOGGLE_TODO,
+    payload: id
+  };
+};
+
+export const editTodo = (id, text) => ({
+  type: EDIT_TODO,
+  payload: { id, text }
+});
+
+export const toggleAll = () => {
+  return {
+    type: TOGGLE_ALL
+  };
+};
 
 // Selectors
 const selectTodos = state => state.todos;
