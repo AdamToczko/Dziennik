@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import uuid from "uuid";
 import styles from "./TodoApp.module.css";
 import { todos } from "../data";
+import AppleControls from "./AppleControls";
 
 const Counter = props => {
   return (
@@ -225,6 +226,7 @@ class TodoApp extends React.Component {
           />
         </section>
         <footer className={styles.info}>
+          <AppleControls />
           <p>Double-click to edit a todo</p>
           <p>
             Template by <a href="http://sindresorhus.com">Sindre Sorhus</a>
