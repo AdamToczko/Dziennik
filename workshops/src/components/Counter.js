@@ -1,3 +1,4 @@
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import styles from "./Counter.module.css";
@@ -39,14 +40,40 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onIncrement: () => dispatch(increment()),
-    onDecrement: () => dispatch(decrement()),
-    onReset: () => dispatch(reset()),
-    onAdd: value => dispatch(add(value)),
-    onSubtract: value => dispatch(subtract(value))
-  };
+// 1. opcja
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onIncrement: () => dispatch(increment()),
+//     onDecrement: () => dispatch(decrement()),
+//     onReset: () => dispatch(reset()),
+//     onAdd: () => dispatch(add()),
+//     onSubtract: value => dispatch(subtract(value))
+//   };
+// };
+
+// 2. opcja
+const mapDispatchToProps = {
+  onIncrement: increment,
+  onDecrement: decrement,
+  onReset: reset,
+  onAdd: add,
+  onSubtract: subtract
 };
+
+// 3. opcja
+// const mapDispatchToProps = dispatch => {
+//   const boundActions = bindActionCreators(
+//     {
+//       onIncrement: increment,
+//       onDecrement: decrement,
+//       onReset: reset,
+//       onAdd: add,
+//       onSubtract: subtract
+//     },
+//     dispatch
+//   );
+
+//   return boundActions;
+// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
