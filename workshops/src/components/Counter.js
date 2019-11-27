@@ -20,7 +20,7 @@ function Counter(props) {
       <button className={styles.button} onClick={props.onDecrement}>
         -1
       </button>
-      <span className={styles.display}>{props.value || 0}</span>
+      <span className={styles.display}>{props.value}</span>
       <button className={styles.button} onClick={props.onIncrement}>
         +1
       </button>
@@ -33,6 +33,10 @@ function Counter(props) {
     </div>
   );
 }
+
+Counter.defaultProps = {
+  value: 0
+};
 
 const mapStateToProps = state => {
   return {
