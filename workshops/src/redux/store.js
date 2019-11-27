@@ -68,7 +68,7 @@ const actions = [
   addTodo("Check if toggle all works")
 ];
 
-actions.forEach(dispatch);
+// actions.forEach(dispatch);
 
 // const idOfTodoToToggle = getState().todos[0].id;
 // // id           // text

@@ -17,7 +17,10 @@ const AppleControls = props => {
       <button className={"apple-control-button"} onClick={props.onGrow}>
         Grow
       </button>
-      <button className={"apple-control-button"} onClick={props.onBite}>
+      <button
+        className={"apple-control-button"}
+        onClick={() => props.onBite(1)}
+      >
         Bite
       </button>
       <button className={"apple-control-button"} onClick={props.onRot}>

@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import styles from "./Apple.module.css";
+import { selectApple, selectEatable } from "../redux/apple";
 
 const Apple = props => {
   return (
@@ -40,4 +42,15 @@ Apple.defaultProps = {
   isEatable: false
 };
 
-export default Apple;
+const mapStateToProps = state => {
+  console.log("Apple is:", selectApple(state));
+  return {
+    hasWorm: selectApple(state).hasWorm,
+    color: selectApple(state).color,
+    isDirty: selectApple(state).isDirty,
+    bites: selectApple(state).size,
+    isEatable: selectEatable(state)
+  };
+};
+
+export default connect(mapStateToProps)(Apple);
