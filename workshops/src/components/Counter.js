@@ -1,7 +1,13 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import styles from "./Counter.module.css";
-import { increment, decrement, reset, selectCounter } from "../redux/counter";
+import {
+  increment,
+  decrement,
+  reset,
+  selectCounter,
+  add
+} from "../redux/counter";
 
 function Counter(props) {
   return (
@@ -12,6 +18,9 @@ function Counter(props) {
       <span className={styles.display}>{props.value || 0}</span>
       <button className={styles.button} onClick={props.onIncrement}>
         +1
+      </button>
+      <button className={styles.button} onClick={() => props.onAdd(5)}>
+        +5
       </button>
       <button className={styles.button} onClick={props.onReset}>
         reset
@@ -30,7 +39,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onIncrement: () => dispatch(increment()),
     onDecrement: () => dispatch(decrement()),
-    onReset: () => dispatch(reset())
+    onReset: () => dispatch(reset()),
+    onAdd: value => dispatch(add(value))
   };
 };
 
