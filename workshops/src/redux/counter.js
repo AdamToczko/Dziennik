@@ -35,6 +35,12 @@ export const increment = () => {
   };
 };
 
+export const decrement = () => {
+  return {
+    type: DECREMENT
+  };
+};
+
 export const add = (value = 0) => {
   if (typeof value !== "number") {
     return {
@@ -59,12 +65,6 @@ export const subtract = (value = 0) => {
 export const reset = () => {
   return {
     type: RESET
-  };
-};
-
-export const decrement = () => {
-  return {
-    type: DECREMENT
   };
 };
 

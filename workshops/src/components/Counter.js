@@ -2,30 +2,14 @@ import React, { Component } from "react";
 import styles from "./Counter.module.css";
 
 class Counter extends Component {
-  state = {
-    count: 10
-  };
-
-  increment = () => {
-    this.setState({
-      count: this.state.count + 1
-    });
-  };
-
-  decrement = () => {
-    this.setState({
-      count: this.state.count - 1
-    });
-  };
-
   render() {
     return (
       <div className={styles.container}>
-        <button className={styles.button} onClick={this.decrement}>
+        <button className={styles.button} onClick={this.props.onDecrement}>
           -1
         </button>
-        <span className={styles.display}>{this.state.count}</span>
-        <button className={styles.button} onClick={this.increment}>
+        <span className={styles.display}>{this.props.value || 0}</span>
+        <button className={styles.button} onClick={this.props.onIncrement}>
           +1
         </button>
       </div>
