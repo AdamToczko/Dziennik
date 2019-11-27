@@ -4,11 +4,13 @@ import Hero from "./components/Hero";
 import Cat from "./components/Cat";
 import { Content } from "./components/Content";
 import FormExample from "./components/FormExample";
+import Apple from "./components/Apple";
 
 function App() {
   return (
     <div className="App">
       <Hero />
+      <Apple />
       <FormExample />
       <Content />
       <Cat

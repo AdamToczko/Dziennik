@@ -1,0 +1,42 @@
+.appleTail {
+  position: absolute;
+  top: -20px;
+  width: 20px;
+  height: 100px;
+  background: black;
+  left: 95px;
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  top: 100px;
+}
+
+.apple {
+  position: relative;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+  border: 10px solid darkred;
+  background: red;
+  border-radius: 60px 70px 100px 90px;
+}
+
+.worm {
+  box-sizing: border-box;
+  width: 70px;
+  height: 20px;
+  border-radius: 5px;
+  background: brown;
+  border: 2px solid black;
+  position: absolute;
+  z-index: 10;
+  top: 55px;
+  right: -10px;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: right;
+  color: white;
+}
