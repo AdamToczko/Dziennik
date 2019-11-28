@@ -75,3 +75,12 @@ export const reset = () => {
 
 // Selectors
 export const selectCounter = state => state.count;
+
+// Side effects
+export const incrementAsync = () => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(increment());
+    }, 5000);
+  };
+};

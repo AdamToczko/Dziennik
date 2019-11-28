@@ -1,6 +1,11 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
-import counterReducer, { increment, add, subtract } from "./counter";
+import counterReducer, {
+  increment,
+  add,
+  subtract,
+  incrementAsync
+} from "./counter";
 // 3. Import action creator from todos module
 import todosReducer, {
   addTodo,
@@ -30,7 +35,29 @@ const rootReducer = combineReducers({
   })
 });
 
-export const store = createStore(rootReducer, devToolsEnhancer());
+const logger = store => next => action => {
+  console.groupCollapsed(`${action.type} was invoked`);
+  console.log("prev state", store.getState());
+  console.log("action: ", action.type);
+  next(action);
+  console.log("next state", store.getState());
+  console.groupEnd();
+};
+
+const thunk = store => next => action => {
+  if (typeof action === "function") {
+    action(store.dispatch, store.getState);
+  } else {
+    next(action);
+  }
+};
+
+// devToolsEnhancer()
+export const store = createStore(
+  rootReducer,
+  undefined,
+  applyMiddleware(thunk, logger)
+);
 export const { getState, dispatch, subscribe } = store;
 
 subscribe(() => {
@@ -71,6 +98,8 @@ const actions = [
   addTodo("Learn React"),
   addTodo("Check if toggle all works")
 ];
+
+dispatch(incrementAsync());
 
 // actions.forEach(dispatch);
 
