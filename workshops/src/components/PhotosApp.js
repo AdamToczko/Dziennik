@@ -47,16 +47,13 @@ class PhotosApp extends React.Component {
     albums: []
   };
 
-  componentDidMount() {
-    fetchPhotos().then(photos => {
-      this.setState({
-        photos
-      });
-    });
-    fetchAlbums().then(albums => {
-      this.setState({
-        albums
-      });
+  async componentDidMount() {
+    const photos = await fetchPhotos();
+    const albums = await fetchAlbums();
+
+    this.setState({
+      photos,
+      albums
     });
   }
 
