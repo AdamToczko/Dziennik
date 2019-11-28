@@ -192,4 +192,5 @@ export const fetchTodos = async () => {
     } catch(error) {
       dispatch(fetchTodosError(error))
     }
+  }
 };
