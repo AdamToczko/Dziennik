@@ -84,3 +84,16 @@ export const incrementAsync = () => {
     }, 5000);
   };
 };
+
+export const resetOnlyWhenMoreThan20 = () => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const counter = selectCounter(state);
+
+    if (counter >= 20) {
+      dispatch(reset());
+    } else {
+      dispatch(add(19));
+    }
+  };
+};

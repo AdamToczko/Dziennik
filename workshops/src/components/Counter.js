@@ -8,7 +8,8 @@ import {
   reset,
   selectCounter,
   add,
-  subtract
+  subtract,
+  resetOnlyWhenMoreThan20
 } from "../redux/counter";
 
 // Presentation
@@ -60,7 +61,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   onIncrement: increment,
   onDecrement: decrement,
-  onReset: reset,
+  onReset: resetOnlyWhenMoreThan20,
   onAdd: add,
   onSubtract: subtract
 };
