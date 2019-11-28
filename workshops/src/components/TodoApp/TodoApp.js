@@ -4,7 +4,7 @@ import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 import ToggleAll from "./ToggleAll";
 import Controls from "./Controls";
-import AppleControls from "./AppleControls";
+import AppleControls from "../AppleControls";
 
 class TodoApp extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class TodoApp extends React.Component {
           </header>
           <section className={styles.main}>
             <ToggleAll />
-            <TodoList />
+            <TodoList todos={[]} />
           </section>
           <Controls />
         </section>

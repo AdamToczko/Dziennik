@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./TodoApp.module.css";
 
 const Filters = props => {
   const filters = ["all", "active", "completed"];

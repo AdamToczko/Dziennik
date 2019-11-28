@@ -2,6 +2,7 @@ import React from "react";
 import Counter from "./Counter";
 import Clear from "./Clear";
 import Filters from "./Filters";
+import styles from "./TodoApp.module.css";
 
 const Controls = () => {
   return (
