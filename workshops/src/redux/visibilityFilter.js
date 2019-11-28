@@ -23,4 +23,4 @@ export const changeFilter = filter => {
 };
 
 // Selectors (export)
-export const selectVisibilityFilter = state => state.visibilityFilter;
+export const selectVisibilityFilter = state => state.todoApp.visibilityFilter;

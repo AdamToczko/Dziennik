@@ -1,9 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import styles from "./TodoApp.module.css";
+import {
+  selectVisibilityFilter,
+  changeFilter
+} from "../../redux/visibilityFilter";
 
 const Filters = props => {
   const filters = ["all", "active", "completed"];
+  console.log(props);
 
   return (
     <ul className={styles.filters}>
@@ -25,13 +30,13 @@ const Filters = props => {
 
 const mapStateToProps = state => {
   return {
-    activeFilter: "all"
+    activeFilter: selectVisibilityFilter(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFilterChange: () => {}
+    onFilterChange: filter => dispatch(changeFilter(filter))
   };
 };
 

@@ -137,7 +137,7 @@ export const selectIsClearVisible = state => {
 
 export const selectVisibleTodos = state => {
   const todos = selectTodos(state);
-  const visibilityFilter = selectVisibilityFilter();
+  const visibilityFilter = selectVisibilityFilter(state);
 
   if (visibilityFilter == "all") {
     return todos;

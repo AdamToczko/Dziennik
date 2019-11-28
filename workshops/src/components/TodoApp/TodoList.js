@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
 import styles from "./TodoApp.module.css";
-import { selectTodos, removeTodo } from "../../redux/todos";
+import { selectTodos, removeTodo, selectVisibleTodos } from "../../redux/todos";
 
 const TodoList = props => {
   return (
@@ -16,7 +16,7 @@ const TodoList = props => {
 
 const mapStateToProps = state => {
   return {
-    todos: selectTodos(state)
+    todos: selectVisibleTodos(state)
   };
 };
 
