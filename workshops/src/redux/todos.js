@@ -7,6 +7,9 @@ const REMOVE_TODO = "REMOVE_TODO";
 const TOGGLE_TODO = "TOGGLE_TODO";
 const EDIT_TODO = "EDIT_TODO";
 const TOGGLE_ALL = "TOGGLE_ALL";
+const FETCH_TODOS_START = "FETCH_TODOS_START";
+const FETCH_TODOS_ERROR = "FETCH_TODOS_ERROR";
+const FETCH_TODOS_SUCCESS = "FETCH_TODOS_SUCCESS";
 
 // reducer
 const initialState = [
@@ -113,6 +116,25 @@ export const toggleAll = () => {
   };
 };
 
+export const fetchTodosStart = () => {
+  return {
+    type: FETCH_TODOS_START
+  };
+};
+export const fetchTodosSuccess = todos => {
+  return {
+    type: FETCH_TODOS_SUCCESS,
+    payload: todos
+  };
+};
+export const fetchTodosError = error => {
+  return {
+    type: FETCH_TODOS_ERROR,
+    error: error,
+    payload: new Error(":(")
+  };
+};
+
 // Selectors
 // [{id: 1, text: '1'}, {id: 2, text: '2'}]
 // ->
@@ -146,4 +168,18 @@ export const selectVisibleTodos = state => {
   } else if (visibilityFilter == "active") {
     return todos.filter(todo => !todo.isDone);
   }
+};
+
+export const fetchTodos = () => {
+  return (dispatch, getState) => {
+    dispatch(fetchTodosStart()); // isLoading -> true
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then(response => response.json())
+      .then(data => {
+        dispatch(fetchTodosSuccess(data)); // isLoading -> false, data -> [{}, {}, {}]
+      })
+      .catch(error => {
+        dispatch(fetchTodosError(error)); // isLoading -> false, error -> "Server error, sorry :("
+      });
+  };
 };
