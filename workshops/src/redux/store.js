@@ -73,5 +73,3 @@ const actions = [
 // const idOfTodoToToggle = getState().todos[0].id;
 // // id           // text
 // dispatch(toggleTodo(idOfTodoToToggle));
-dispatch(toggleAll());
-dispatch(toggleAll());
