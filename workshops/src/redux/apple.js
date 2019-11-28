@@ -87,7 +87,12 @@ export const addWorm = () => {
 // const apple = getState();
 // const { color, hasWorm, isDirty } = apple;
 // const eatable = color === "red" && !hasWorm && !isDirty && size !== 0
-export const selectApple = state => state.apple;
+export const selectApple = state => {
+  return {
+    ...state.apple,
+    bites: state.apple.size
+  };
+};
 
 export const selectEatable = state => {
   const { color, isDirty, hasWorm, size } = selectApple(state);

@@ -51,12 +51,8 @@ Apple.propTypes = {
 Apple.displayName = "MyApple";
 
 const mapStateToProps = state => {
-  console.log("Apple is:", selectApple(state));
   return {
-    hasWorm: selectApple(state).hasWorm,
-    color: selectApple(state).color,
-    isDirty: selectApple(state).isDirty,
-    bites: selectApple(state).size,
+    ...selectApple(state),
     isEatable: selectEatable(state)
   };
 };
