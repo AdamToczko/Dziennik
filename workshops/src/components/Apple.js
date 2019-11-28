@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "./Apple.module.css";
 import { selectApple, selectEatable } from "../redux/apple";
@@ -42,6 +43,13 @@ Apple.defaultProps = {
   isEatable: false
 };
 
+Apple.propTypes = {
+  bites: PropTypes.number,
+  isEatable: PropTypes.bool
+};
+
+Apple.displayName = "MyApple";
+
 const mapStateToProps = state => {
   console.log("Apple is:", selectApple(state));
   return {
@@ -53,4 +61,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Apple);
+export default Apple;

@@ -11,6 +11,7 @@ import {
   subtract
 } from "../redux/counter";
 
+// Presentation
 function Counter(props) {
   return (
     <div className={styles.container}>
@@ -80,4 +81,5 @@ const mapDispatchToProps = {
 //   return boundActions;
 // };
 
+// Container
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
