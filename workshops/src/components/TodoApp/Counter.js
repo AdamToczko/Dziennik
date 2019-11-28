@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import styles from "./TodoApp.module.css";
+import { selectTodosLeft } from "../../redux/todos";
 
 const Counter = props => {
   return (
@@ -9,4 +11,10 @@ const Counter = props => {
   );
 };
 
-export default Counter;
+const mapStateToProps = state => {
+  return {
+    itemsLeft: selectTodosLeft(state)
+  };
+};
+
+export default connect(mapStateToProps)(Counter);
