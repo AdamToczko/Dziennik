@@ -1,4 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 import { devToolsEnhancer } from "redux-devtools-extension";
 import counterReducer, {
   increment,
@@ -34,23 +36,6 @@ const rootReducer = combineReducers({
     visibilityFilter: visibilityFilterReducer
   })
 });
-
-const logger = store => next => action => {
-  console.groupCollapsed(`${action.type} was invoked`);
-  console.log("prev state", store.getState());
-  console.log("action: ", action.type);
-  next(action);
-  console.log("next state", store.getState());
-  console.groupEnd();
-};
-
-const thunk = store => next => action => {
-  if (typeof action === "function") {
-    action(store.dispatch, store.getState);
-  } else {
-    next(action);
-  }
-};
 
 // devToolsEnhancer()
 export const store = createStore(
