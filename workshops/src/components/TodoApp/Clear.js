@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import styles from "./TodoApp.module.css";
+import { selectIsClearVisible } from "../../redux/todos";
 
 const Clear = props => {
   if (!props.isClearVisible) {
@@ -8,4 +10,10 @@ const Clear = props => {
   return <button className={styles.clearCompleted}>Clear completed</button>;
 };
 
-export default Clear;
+const mapStateToProps = state => {
+  return {
+    isClearVisible: selectIsClearVisible(state)
+  };
+};
+
+export default connect(mapStateToProps)(Clear);
