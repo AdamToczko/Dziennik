@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import styles from "./TodoApp.module.css";
 
 const Filters = props => {
@@ -22,4 +23,16 @@ const Filters = props => {
   );
 };
 
-export default Filters;
+const mapStateToProps = state => {
+  return {
+    activeFilter: "all"
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFilterChange: () => {}
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

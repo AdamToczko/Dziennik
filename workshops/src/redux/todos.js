@@ -1,4 +1,5 @@
 import uuid from "uuid";
+import { selectVisibilityFilter } from "./visibilityFilter";
 
 // Action types
 const ADD_TODO = "ADD_TODO";
@@ -118,15 +119,13 @@ export const toggleAll = () => {
 // [{id: 1, label: '1'}, {id: 2, label: '2'}]
 
 export const selectTodos = state =>
-  state.todos.map(todo => {
+  state.todoApp.todos.map(todo => {
     return {
       id: todo.id,
       isDone: todo.isDone,
       label: todo.text
     };
   });
-
-export const selectVisibilityFilter = state => state.todosApp.visibilityFilter;
 
 export const selectTodosLeft = state => {
   return selectTodos(state).filter(todo => !todo.isDone).length;

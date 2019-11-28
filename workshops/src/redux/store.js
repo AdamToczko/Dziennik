@@ -19,11 +19,15 @@ import appleReducer, {
   rot,
   selectEatable
 } from "./apple";
+import visibilityFilterReducer from "./visibilityFilter";
 
 const rootReducer = combineReducers({
-  todos: todosReducer,
   count: counterReducer,
-  apple: appleReducer
+  apple: appleReducer,
+  todoApp: combineReducers({
+    todos: todosReducer,
+    visibilityFilter: visibilityFilterReducer
+  })
 });
 
 export const store = createStore(rootReducer, devToolsEnhancer());
