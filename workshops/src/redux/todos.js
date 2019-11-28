@@ -175,24 +175,21 @@ export const selectVisibleTodos = state => {
   }
 };
 
-export const fetchTodos = () => {
-  return (dispatch, getState) => {
-    dispatch(fetchTodosStart()); // isLoading -> true
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then(response => response.json())
-      .then(data => {
-        const todos = data.map(todo => {
-          return {
-            id: todo.id,
-            isDone: todo.completed,
-            text: todo.title
-          };
-        });
-        debugger;
-        dispatch(fetchTodosSuccess(todos)); // isLoading -> false, data -> [{}, {}, {}]
-      })
-      .catch(error => {
-        dispatch(fetchTodosError(error)); // isLoading -> false, error -> "Server error, sorry :("
+export const fetchTodos = async () => {
+  return (dispatch) => {
+    try {
+      dispatch(fetchTodosStart()); // isLoading -> true
+      const response = await fetch("https://jsonplaceholder.typicode.com/todos")
+      const data = await response.json()
+      const todos = data.map(todo => {
+        return {
+          id: todo.id,
+          isDone: todo.completed,
+          text: todo.title
+        };
       });
-  };
+      dispatch(fetchTodosSuccess(todos))
+    } catch(error) {
+      dispatch(fetchTodosError(error))
+    }
 };
