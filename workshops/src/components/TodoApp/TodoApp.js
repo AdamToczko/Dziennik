@@ -1,12 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 import styles from "./TodoApp.module.css";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 import ToggleAll from "./ToggleAll";
 import Controls from "./Controls";
 import AppleControls from "../AppleControls";
+import { fetchTodos } from "../../redux/todos";
 
 class TodoApp extends React.Component {
+  componentDidMount() {
+    this.props.onMount();
+  }
+
   render() {
     return (
       <div>
@@ -39,4 +45,10 @@ class TodoApp extends React.Component {
   }
 }
 
-export default TodoApp;
+const mapDispatchToProps = dispatch => {
+  return {
+    onMount: () => dispatch(fetchTodos())
+  };
+};
+
+export default connect(null, mapDispatchToProps)(TodoApp);

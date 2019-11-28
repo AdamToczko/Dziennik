@@ -7,6 +7,7 @@ const REMOVE_TODO = "REMOVE_TODO";
 const TOGGLE_TODO = "TOGGLE_TODO";
 const EDIT_TODO = "EDIT_TODO";
 const TOGGLE_ALL = "TOGGLE_ALL";
+
 const FETCH_TODOS_START = "FETCH_TODOS_START";
 const FETCH_TODOS_ERROR = "FETCH_TODOS_ERROR";
 const FETCH_TODOS_SUCCESS = "FETCH_TODOS_SUCCESS";
@@ -52,6 +53,10 @@ const todosReducer = (prevState = initialState, action) => {
           return todo;
         }
       });
+    case FETCH_TODOS_START:
+      return [];
+    case FETCH_TODOS_SUCCESS:
+      return action.payload;
     case EDIT_TODO:
       return prevState.map(todo => {
         if (todo.id === action.payload.id) {
@@ -176,7 +181,15 @@ export const fetchTodos = () => {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then(response => response.json())
       .then(data => {
-        dispatch(fetchTodosSuccess(data)); // isLoading -> false, data -> [{}, {}, {}]
+        const todos = data.map(todo => {
+          return {
+            id: todo.id,
+            isDone: todo.completed,
+            text: todo.title
+          };
+        });
+        debugger;
+        dispatch(fetchTodosSuccess(todos)); // isLoading -> false, data -> [{}, {}, {}]
       })
       .catch(error => {
         dispatch(fetchTodosError(error)); // isLoading -> false, error -> "Server error, sorry :("
