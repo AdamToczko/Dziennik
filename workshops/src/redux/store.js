@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { devToolsEnhancer } from "redux-devtools-extension";
+import { composeWithDevTools } from "redux-devtools-extension";
 import counterReducer, {
   increment,
   add,
@@ -37,11 +37,12 @@ const rootReducer = combineReducers({
   })
 });
 
-// devToolsEnhancer()
+const composeEnhancer = composeWithDevTools({});
+
 export const store = createStore(
   rootReducer,
   undefined,
-  applyMiddleware(thunk, logger)
+  composeEnhancer(applyMiddleware(thunk, logger))
 );
 export const { getState, dispatch, subscribe } = store;
 
