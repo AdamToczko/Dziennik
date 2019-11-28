@@ -17,7 +17,7 @@ class TodoApp extends React.Component {
           </header>
           <section className={styles.main}>
             <ToggleAll />
-            <TodoList todos={[]} />
+            <TodoList />
           </section>
           <Controls />
         </section>

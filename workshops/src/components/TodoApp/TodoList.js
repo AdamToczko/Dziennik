@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
 import styles from "./TodoApp.module.css";
 
@@ -12,4 +13,24 @@ const TodoList = props => {
   );
 };
 
-export default TodoList;
+const mapStateToProps = state => {
+  return {
+    todos: [
+      {
+        id: 1,
+        isDone: false,
+        label: "Hello"
+      }
+    ]
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeleteTodo: () => {
+      console.log("DELETING TODO");
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
