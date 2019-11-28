@@ -8,7 +8,23 @@ const EDIT_TODO = "EDIT_TODO";
 const TOGGLE_ALL = "TOGGLE_ALL";
 
 // reducer
-const initialState = [];
+const initialState = [
+  {
+    id: uuid.v4(),
+    isDone: false,
+    text: "Task #1"
+  },
+  {
+    id: uuid.v4(),
+    isDone: false,
+    text: "Task #2"
+  },
+  {
+    id: uuid.v4(),
+    isDone: true,
+    text: "Task #3"
+  }
+];
 
 const todosReducer = (prevState = initialState, action) => {
   switch (action.type) {
@@ -97,7 +113,18 @@ export const toggleAll = () => {
 };
 
 // Selectors
-const selectTodos = state => state.todos;
+// [{id: 1, text: '1'}, {id: 2, text: '2'}]
+// ->
+// [{id: 1, label: '1'}, {id: 2, label: '2'}]
+
+export const selectTodos = state =>
+  state.todos.map(todo => {
+    return {
+      id: todo.id,
+      isDone: todo.isDone,
+      label: todo.text
+    };
+  });
 
 const selectVisibilityFilter = state => state.todosApp.visibilityFilter;
 

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
 import styles from "./TodoApp.module.css";
+import { selectTodos, removeTodo } from "../../redux/todos";
 
 const TodoList = props => {
   return (
@@ -15,21 +16,13 @@ const TodoList = props => {
 
 const mapStateToProps = state => {
   return {
-    todos: [
-      {
-        id: 1,
-        isDone: false,
-        label: "Hello"
-      }
-    ]
+    todos: selectTodos(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onDeleteTodo: () => {
-      console.log("DELETING TODO");
-    }
+    onDeleteTodo: id => dispatch(removeTodo(id))
   };
 };
 
