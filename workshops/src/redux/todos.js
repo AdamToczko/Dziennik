@@ -175,12 +175,14 @@ export const selectVisibleTodos = state => {
   }
 };
 
-export const fetchTodos = async () => {
-  return (dispatch) => {
+export const fetchTodos = () => {
+  return async dispatch => {
     try {
       dispatch(fetchTodosStart()); // isLoading -> true
-      const response = await fetch("https://jsonplaceholder.typicode.com/todos")
-      const data = await response.json()
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos"
+      );
+      const data = await response.json();
       const todos = data.map(todo => {
         return {
           id: todo.id,
@@ -188,9 +190,9 @@ export const fetchTodos = async () => {
           text: todo.title
         };
       });
-      dispatch(fetchTodosSuccess(todos))
-    } catch(error) {
-      dispatch(fetchTodosError(error))
+      dispatch(fetchTodosSuccess(todos));
+    } catch (error) {
+      dispatch(fetchTodosError(error));
     }
-  }
+  };
 };
