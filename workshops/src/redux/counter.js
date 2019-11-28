@@ -80,7 +80,7 @@ export const selectCounter = state => state.count;
 export const incrementAsync = () => {
   return dispatch => {
     setTimeout(() => {
-      dispatch(increment());
+      dispatch(resetOnlyWhenMoreThan20());
     }, 5000);
   };
 };
@@ -94,6 +94,17 @@ export const resetOnlyWhenMoreThan20 = () => {
       dispatch(reset());
     } else {
       dispatch(add(19));
+    }
+  };
+};
+
+export const subtractWhenDivisableBy5 = () => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const counter = selectCounter(state);
+
+    if (counter % 5 === 0) {
+      dispatch(subtract(5));
     }
   };
 };

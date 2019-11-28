@@ -9,7 +9,8 @@ import {
   selectCounter,
   add,
   subtract,
-  resetOnlyWhenMoreThan20
+  resetOnlyWhenMoreThan20,
+  subtractWhenDivisableBy5
 } from "../redux/counter";
 
 // Presentation
@@ -63,7 +64,7 @@ const mapDispatchToProps = {
   onDecrement: decrement,
   onReset: resetOnlyWhenMoreThan20,
   onAdd: add,
-  onSubtract: subtract
+  onSubtract: subtractWhenDivisableBy5
 };
 
 // 3. opcja
