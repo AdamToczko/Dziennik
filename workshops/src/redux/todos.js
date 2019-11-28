@@ -126,17 +126,17 @@ export const selectTodos = state =>
     };
   });
 
-const selectVisibilityFilter = state => state.todosApp.visibilityFilter;
+export const selectVisibilityFilter = state => state.todosApp.visibilityFilter;
 
 export const selectTodosLeft = state => {
   return selectTodos(state).filter(todo => !todo.isDone).length;
 };
 
-const selectIsClearVisible = state => {
+export const selectIsClearVisible = state => {
   return selectTodos(state).some(todo => todo.isDone);
 };
 
-const selectVisibleTodos = state => {
+export const selectVisibleTodos = state => {
   const todos = selectTodos(state);
   const visibilityFilter = selectVisibilityFilter();
 
