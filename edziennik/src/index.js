@@ -53,10 +53,9 @@ async function register (email, password, firstName, lastName, role) {
       }
     //If teacher?
     if (role === "TEACHER") {
-        await firebase.database().ref('/teachers').push({
-         skills: [],
-         class: [],
-         id: id   
+        await firebase.database().ref(`/teachers/${id}`).set({
+         skills: "",
+         class: "", 
         })
     }
 
@@ -67,4 +66,4 @@ async function register (email, password, firstName, lastName, role) {
    
 }
 
-register("student@example.com", "abc123", "John", "Doe", "STUDENT")
+register("teacher@example.com", "abc123", "Peter", "Parker", "TEACHER")
