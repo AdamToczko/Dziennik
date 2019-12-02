@@ -30,18 +30,37 @@ async function register (email, password, firstName, lastName, role) {
       password
     )
 
+    const id = userCredential.user.uid
+
     // After registration what do we have to do?
+    await firebase.database().ref(`/users/${id}`).set({
+      email,
+      firstName,
+      lastName,
+      role
+    })
 
     // What type of user do we create? What is its role?
 
     // If student?
+    if (role === "STUDENT") {
+      await firebase.database().ref(`/students/${id}`).set({
+        classId: "",
+        avatarUrl: ""
+      })
+    }
 
     // If teacher?
-
-    // If admin?
+    if (role === "TEACHER") {
+      firebase.database().ref('/teachers').push({
+        skills: [],
+        classes: [],
+        id
+      })
+    }
   } catch (error) {
     // handle firebase error somehow
   }
 }
 
-register("demo24@example.com", "abc123")
+register("student5@example.com", "abc123", "Kacper", "Grzeszczyk", "STUDENT")
