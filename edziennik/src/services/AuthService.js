@@ -67,7 +67,7 @@ export async function login (email, password) {
   // get teacher data
 }
 
-function logout () {
-  // just logout
+export function logout () {
+  firebase.auth().signOut()
 }
 
