@@ -46,15 +46,14 @@ async function register (email, password, firstName, lastName, role) {
 
     //If student?
     if (role === "STUDENT") {
-        firebase.database().ref('/students').push({
-         classId: "",
-         avatarUrl: "",
-         id: id   
+        await firebase.database().ref(`/students/${id}`).set({
+          classId: "",
+          avatarUrl: ""
         })
-    }
+      }
     //If teacher?
     if (role === "TEACHER") {
-        firebase.database().ref('/teachers').push({
+        await firebase.database().ref('/teachers').push({
          skills: [],
          class: [],
          id: id   
@@ -68,4 +67,4 @@ async function register (email, password, firstName, lastName, role) {
    
 }
 
-register("admin@example.com", "abc123", "Adam", "Toczko", "ADMIN")
+register("student@example.com", "abc123", "John", "Doe", "STUDENT")
