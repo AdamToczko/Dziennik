@@ -48,8 +48,7 @@ class PhotosApp extends React.Component {
   };
 
   async componentDidMount() {
-    const photos = await fetchPhotos();
-    const albums = await fetchAlbums();
+    const [photos, albums] = await Promise.all([fetchPhotos(), fetchAlbums()]);
 
     this.setState({
       photos,
