@@ -22,3 +22,26 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+// What fields does the user have?
+async function register (email, password, firstName, lastName, role) {
+  try {
+    const userCredential = await firebase.auth().createUserWithEmailAndPassword(
+      email,
+      password
+    )
+
+    // After registration what do we have to do?
+
+    // What type of user do we create? What is its role?
+
+    // If student?
+
+    // If teacher?
+
+    // If admin?
+  } catch (error) {
+    // handle firebase error somehow
+  }
+}
+
+register("demo24@example.com", "abc123")
