@@ -16,8 +16,11 @@ export async function addSkill (newSkill) {
   }
 }
 
+// 1. pass name of skill to remove
 function removeSkill () {
-
+  // 2. fetch all skills
+  // 3. filter out skill to be removed
+  // 4. send skills without skill to be removed back to firebase
 }
 
 export async function fetchSkills () {
