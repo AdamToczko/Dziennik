@@ -39,3 +39,35 @@ export async function register (email, password, firstName, lastName, role) {
     // handle firebase error somehow
   }
 }
+
+export async function login (email, password) {
+  // login to the system
+  const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password)
+  const id = userCredential.user.uid
+
+  // get user data
+  const dataSnapshot = await firebase.database().ref(`/users/${id}`).once('value')
+  const user = dataSnapshot.val()
+
+  // if role === student
+  if (user.role === 'STUDENT') {
+    // get student data
+    const dataSnapshot = await firebase.database().ref(`/students/${id}`).once("value")
+    const student = dataSnapshot.val()
+
+    const profile = {
+      ...user,
+      ...student
+    }
+
+    return profile
+  }
+
+  // if role === teacher
+  // get teacher data
+}
+
+function logout () {
+  // just logout
+}
+
