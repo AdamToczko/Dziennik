@@ -13,6 +13,7 @@ import {
   Button
 } from 'bloomer'
 
+
 const Profile = props => {
   return (
     <Container>
