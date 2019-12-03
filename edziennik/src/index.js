@@ -3,7 +3,7 @@ import "./services/firebaseSetup"
 import ReactDOM from 'react-dom'
 import {Container, Box, Button } from 'bloomer'
 import 'bulma/css/bulma.min.css'
-import { Main, Profile } from "./screens"
+import { Main, Profile, Timetable } from "./screens"
 import './index.css'
 
 const root = document.getElementById('root')
@@ -14,7 +14,8 @@ ReactDOM.render(
     //     <Button isColor='success' isOutlined>isOutlined</Button>
     // </Container>,
     <Main>
-        <Profile />
+        {/* <Profile /> */}
+        <Timetable/>
     </Main> 
         ,root
 )
