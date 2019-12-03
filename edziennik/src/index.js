@@ -3,7 +3,7 @@ import "./services/firebaseSetup"
 import ReactDOM from 'react-dom'
 import {Container, Box, Button } from 'bloomer'
 import 'bulma/css/bulma.min.css'
-import Main from "./screens/Main"
+import { Main, Profile } from "./screens"
 
 const root = document.getElementById('root')
 
