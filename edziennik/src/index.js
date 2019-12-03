@@ -1,21 +1,25 @@
 import React from 'react'
 import "./services/firebaseSetup"
 import ReactDOM from 'react-dom'
-import {Container, Box, Button } from 'bloomer'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'bulma/css/bulma.min.css'
 import { Main, Profile, Timetable } from "./screens"
 import './index.css'
+import Protected from "./components/Protected"
+
 
 const root = document.getElementById('root')
 
 ReactDOM.render(
-    // <Container>
-    //     <Box>Hello World!</Box>
-    //     <Button isColor='success' isOutlined>isOutlined</Button>
-    // </Container>,
-    <Main>
-        {/* <Profile /> */}
-        <Timetable/>
-    </Main> 
-        ,root
+    <Protected>
+    <Router>
+      <Main>
+        <Switch>
+          <Route exact path="/profile" component={Profile}/>
+          <Route exact path="/timetable" component={Timetable}/>
+        </Switch>
+      </Main>
+    </Router>
+  </Protected>
+    , root
 )

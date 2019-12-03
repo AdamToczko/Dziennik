@@ -16,7 +16,7 @@ import {
 const Profile = props => {
   return (
     <Container>
-      <h1>Profile</h1>
+   
       <Title isSize={1} hasTextAlign={'centered'}>Profile</Title>
       <Columns>
         <Column isSize={2}>
