@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import {Container, Box, Button } from 'bloomer'
 import 'bulma/css/bulma.min.css'
 import { Main, Profile } from "./screens"
+import './index.css'
 
 const root = document.getElementById('root')
 
@@ -13,7 +14,7 @@ ReactDOM.render(
     //     <Button isColor='success' isOutlined>isOutlined</Button>
     // </Container>,
     <Main>
-        <h1>Grades</h1>
+        <Profile />
     </Main> 
         ,root
 )
