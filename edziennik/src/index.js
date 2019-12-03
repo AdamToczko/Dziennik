@@ -7,4 +7,10 @@ import * as ClassService from "./services/ClassService"
 
 // fetchSkills()
 login("student10@example.com", "abc123")
+<<<<<<< HEAD
 addSkill('JS')
+=======
+// addSkill('JS')
+// ClassService.addClass("JFDD13")
+ClassService.addTeacherToClass("", "-Lv5fUxFOPEJWFE4sSrK")
+>>>>>>> 6c83aa503a5b674d87643387975fe6fa34058b47
