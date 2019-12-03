@@ -1,12 +1,15 @@
+import React from 'react'
 import "./services/firebaseSetup"
-import { register, login } from "./services/AuthService"
-import { fetchSkills, addSkill } from "./services/SkillService"
-import * as ClassService from "./services/ClassService"
+import ReactDOM from 'react-dom'
+import {Container, Box, Button } from 'bloomer'
+import 'bulma/css/bulma.min.css'
 
-// register("student10@example.com", "abc123", "Tom", "Lorens", "STUDENT")
+const root = document.getElementById('root')
 
-// fetchSkills()
-login("student10@example.com", "abc123")
-// addSkill('JS')
-// ClassService.addClass("JFDD13")
-ClassService.addTeacherToClass("", "46hVXHrQF7WAWM4Zi5yC5GzqqYP2")
+ReactDOM.render(
+    <Container>
+        <Box>Hello World!</Box>
+        <Button isColor='success' isOutlined>isOutlined</Button>
+    </Container>,
+    document.getElementById('root')
+)
