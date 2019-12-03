@@ -9,7 +9,8 @@ export async function addClass(name) {
   await firebase.database().ref('/classes').push({
     name,
     students: '',
-    teachers: ''
+    teachers: '',
+    plan: ''
   })
 }
 
@@ -29,23 +30,83 @@ export async function addTeacherToClass(teacherId, classId) {
   if (typeof teachersInClass === 'string') {
     const teachers = [teacherId]
     teachersInClassRef.set(teachers)
+  } else if (teachersInClass === null) {
+    return 
   } else {
     // we have array here!
-    // 1. check if teacher is in a class
-    // 2. if he is there, do nothing
-    // 3. if teacher is not there, add him to the class
-    // 4. send new teachers array to firebase
+    let newTeachersInClass = []
+    if (teachersInClass.includes(teacherId)) {
+      return
+    } else {
+      newTeachersInClass = [...teachersInClass, teacherId]
+    }
+    teachersInClassRef.set(newTeachersInClass)
   }
 }
 
-export function addStudentToClass(studentId, classId) {
+export async function removeTeacherFromClass(teacherId, classId) {
+  const teachersInClassRef = firebase.database().ref(`/classes/${classId}/teachers`)
+  const teachersInClass = await teachersInClassRef.once('value').then(ds => ds.val())
 
+  if (typeof teachersInClass === 'string') {
+    return
+  } else {
+    let newTeachersInClass = []
+    if (teachersInClass.includes(teacherId)) {
+      newTeachersInClass = teachersInClass.filter(id => id !== teacherId)
+    } else {
+      return
+    }
+    teachersInClassRef.set(newTeachersInClass)
+  }
 }
 
-export function removeTeacherFromClass(teacherId, classId) {
+export async function addStudentToClass(studentId, classId) {
+  const studentsInClassRef = firebase.database().ref(`/classes/${classId}/students`)
+  const studentsInClass = await studentsInClassRef.once('value').then(ds => ds.val())
 
+  if (typeof studentsInClass === 'string') {
+    const students = [studentId]
+    studentsInClassRef.set(students)
+  } else {
+    if (studentsInClass.includes(studentId)) {
+      return
+    } else {
+      let newStudentsInClass
+      newStudentsInClass = [...studentsInClass, studentId]
+      studentsInClassRef.set(newStudentsInClass)
+    }
+  }
 }
 
-export function removeStudentFromClass(studentId, classId) {
+export async function removeStudentFromClass(studentId, classId) {
+  const studentsInClassRef = firebase.database().ref(`/classes/${classId}/students`)
+  const studentsInClass = await studentsInClassRef.once('value').then(ds => ds.val())
 
+  if (typeof studentsInClass === 'string') {
+    return
+  } else {
+    let newStudentsInClass = []
+    if (studentsInClass.includes(studentId)) {
+      newStudentsInClass = studentsInClass.filter(id => id !== studentId)
+      studentsInClassRef.set(newStudentsInClass)
+    } else {
+      return
+    }
+  }
 }
+
+// const createLesson = (lesson = 'Free', hours = 0)
+
+// const createDay = (lessons = [createLesson()]) => {
+//   return lessons
+// }
+
+// const createPlan = (mon = createDay(), tue = createDay(), wed = createDay(), thu = createDay(), fri = createDay(), sat = createDay(), sun = createDay()) => {
+//   const plan = [mon, tue, wed, thu, fri, sat, sun]
+// }
+
+// const updateClassPlan = async (classId, plan = createPlan()) => {
+//   const planInClassRef = firebase.database().ref(`/classes/${classId}/plan`)
+//   const planInClass = await planInClassRef.once('value').then(ds => ds.val())
+// }
