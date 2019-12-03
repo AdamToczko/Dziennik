@@ -12,7 +12,8 @@ ReactDOM.render(
     //     <Box>Hello World!</Box>
     //     <Button isColor='success' isOutlined>isOutlined</Button>
     // </Container>,
-    <Main />,
-    
-    document.getElementById('root')
+    <Main>
+        <h1>Grades</h1>
+    </Main> 
+        ,root
 )
